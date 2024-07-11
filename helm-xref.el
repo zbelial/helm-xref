@@ -51,8 +51,8 @@
   :type '(radio
           (function-item helm-xref-format-candidate-short)
           (function-item helm-xref-format-candidate-full-path)
-		  (function-item helm-xref-format-candidate-long)
-		  function)
+	  (function-item helm-xref-format-candidate-long)
+	  function)
   :group 'helm-xref)
 
 (defcustom helm-xref-input ""
@@ -80,15 +80,15 @@
           (or
            (assoc-default 'fetched-xrefs alist)
            (funcall fetcher))))
-	(dolist (xref xrefs)
-	  (let* ((summary (xref-item-summary xref))
-           (location (xref-item-location xref))
-           (line (xref-location-line location))
-		       (file (xref-location-group location))
-		       candidate)
-      (setq candidate
-		        (funcall helm-xref-candidate-formatting-function file line summary))
-      (push (cons candidate xref) helm-xref-alist))))
+    (dolist (xref xrefs)
+      (let* ((summary (xref-item-summary xref))
+             (location (xref-item-location xref))
+             (line (xref-location-line location))
+	     (file (xref-location-group location))
+	     candidate)
+        (setq candidate
+	      (funcall helm-xref-candidate-formatting-function file line summary))
+        (push (cons candidate xref) helm-xref-alist))))
   (setq helm-xref-alist (reverse helm-xref-alist)))
 
 (defun helm-xref-format-candidate-short (file line summary)

@@ -139,6 +139,7 @@ Use FUNC to display buffer."
          (offset (marker-position marker)))
     (switch-to-buffer buf)
     (goto-char offset)
+    (recenter)
     (funcall func buf)))
 
 (defun helm-xref-source ()
